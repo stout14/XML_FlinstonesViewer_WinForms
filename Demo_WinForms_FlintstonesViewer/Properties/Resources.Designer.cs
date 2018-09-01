@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WinformsMVVMTest.Properties
+namespace Demo_WinForms_FlintstonesViewer.Properties
 {
 
 

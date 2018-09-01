@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinformsMVVMTest", "WinformsMVVMTest\WinformsMVVMTest.csproj", "{BA5957AE-7D6F-47B9-8553-CE3D37C96FE1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_WinForms_FlintstonesViewer", "Demo_WinForms_FlintstonesViewer\Demo_WinForms_FlintstonesViewer.csproj", "{BA5957AE-7D6F-47B9-8553-CE3D37C96FE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
