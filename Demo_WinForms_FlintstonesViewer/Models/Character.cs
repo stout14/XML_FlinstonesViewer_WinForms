@@ -16,5 +16,6 @@ namespace Demo_WinForms_FlintstonesViewer
         public int Age { get; set; }
         public GenderType Gender { get; set; }
         public string ImageFileName { get; set; }
+        public string Description { get; set; }
     }
 }

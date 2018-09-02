@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView_People = new System.Windows.Forms.DataGridView();
+            this.dataGridView_Characters = new System.Windows.Forms.DataGridView();
             this.btn_DeleteSelected = new System.Windows.Forms.Button();
             this.btn_DetailView = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_People)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Characters)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView_People
+            // dataGridView_Characters
             // 
-            this.dataGridView_People.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_People.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView_People.Name = "dataGridView_People";
-            this.dataGridView_People.RowTemplate.Height = 24;
-            this.dataGridView_People.Size = new System.Drawing.Size(449, 229);
-            this.dataGridView_People.TabIndex = 0;
+            this.dataGridView_Characters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Characters.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView_Characters.Name = "dataGridView_Characters";
+            this.dataGridView_Characters.RowTemplate.Height = 24;
+            this.dataGridView_Characters.Size = new System.Drawing.Size(449, 229);
+            this.dataGridView_Characters.TabIndex = 0;
             // 
             // btn_DeleteSelected
             // 
@@ -70,18 +70,18 @@
             this.ClientSize = new System.Drawing.Size(652, 253);
             this.Controls.Add(this.btn_DetailView);
             this.Controls.Add(this.btn_DeleteSelected);
-            this.Controls.Add(this.dataGridView_People);
+            this.Controls.Add(this.dataGridView_Characters);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_People)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Characters)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView_People;
+        private System.Windows.Forms.DataGridView dataGridView_Characters;
         private System.Windows.Forms.Button btn_DeleteSelected;
         private System.Windows.Forms.Button btn_DetailView;
     }

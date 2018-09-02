@@ -91,11 +91,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\FlintstoneCharacters.xml" />
+    <Content Include="Data\FlintstoneCharacters.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\bamm_bamm_rubble.gif" />
+    <Content Include="Images\barney_rubble.jpg" />
+    <Content Include="Images\betty_rubble.gif" />
+    <Content Include="Images\dino.jpg" />
+    <Content Include="Images\fred_flintstone.jpg" />
+    <Content Include="Images\pebbles_flintstone.jpg" />
+    <Content Include="Images\wilma_flintstone.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
