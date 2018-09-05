@@ -11,7 +11,7 @@ namespace Demo_WinForms_FlintstonesViewer
 {
     public class XmlDataService : IDataService
     {
-        private string _dataFile;
+        private string _dataFilePath;
 
         public List<Character> ReadAll()
         {
@@ -20,7 +20,7 @@ namespace Demo_WinForms_FlintstonesViewer
 
             try
             {
-                StreamReader reader = new StreamReader(_dataFile);
+                StreamReader reader = new StreamReader(_dataFilePath);
                 using (reader)
                 {
                     characters = (List<Character>)serializer.Deserialize(reader);
@@ -29,16 +29,29 @@ namespace Demo_WinForms_FlintstonesViewer
             }
             catch (Exception)
             {
-                throw;
+                throw; // all exceptions are handled in the ListForm class
             }
-
 
             return characters;
         }
 
-        public void WriteAll()
+        public void WriteAll(List<Character> characters)
         {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Character>), new XmlRootAttribute("Characters"));
 
+            try
+            {
+                StreamWriter writer = new StreamWriter(_dataFilePath);
+                using (writer)
+                {
+                    serializer.Serialize(writer, characters);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public XmlDataService()
@@ -48,7 +61,7 @@ namespace Demo_WinForms_FlintstonesViewer
 
         public XmlDataService(string datafile)
         {
-            _dataFile = datafile;
+            _dataFilePath = datafile;
         }
     }
 }

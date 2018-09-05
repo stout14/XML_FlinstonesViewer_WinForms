@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Demo_WinForms_FlintstonesViewer
 {
-    public interface IDataService
+    public static class AppConfig
     {
-        List<Character> ReadAll();
-        void WriteAll(List<Character> characters);
+        public static string dataFilePath = @"Data\FlintstoneCharacters.xml";
     }
 }

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{BA5957AE-7D6F-47B9-8553-CE3D37C96FE1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WinformsMVVMTest</RootNamespace>
-    <AssemblyName>WinformsMVVMTest</AssemblyName>
+    <RootNamespace>Demo_WinForms_FlintstonesViewer</RootNamespace>
+    <AssemblyName>Demo_WinForms_FlintstonesViewer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="DAL\IDataService.cs" />
     <Compile Include="DAL\XmlDataService.cs" />
+    <Compile Include="Data\AppConfig.cs" />
     <Compile Include="DetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +77,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

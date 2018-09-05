@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace Demo_WinForms_FlintstonesViewer
 {
     public partial class ListForm : Form
     {
-        private List<Character> _charecters;
+        private List<Character> _characters;
 
         public ListForm()
         {
@@ -21,18 +22,18 @@ namespace Demo_WinForms_FlintstonesViewer
 
         private void ReadXmlFileAndBindToDataGrid()
         {
-            string datafile = @"Data\FlintstoneCharacters.xml";
+            string dataFilePath = AppConfig.dataFilePath;
 
             //
             // read data file
             //
-            IDataService dataService = new XmlDataService(datafile);
-            _charecters = dataService.ReadAll();
+            IDataService dataService = new XmlDataService(dataFilePath);
+            _characters = dataService.ReadAll();
 
             //
             // bind list to DataGridView control
             //
-            var bindingList = new BindingList<Character>(_charecters);
+            var bindingList = new BindingList<Character>(_characters);
             var source = new BindingSource(bindingList, null);
             dataGridView_Characters.DataSource = source;
 
@@ -46,7 +47,17 @@ namespace Demo_WinForms_FlintstonesViewer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ReadXmlFileAndBindToDataGrid();
+            try
+            {
+                ReadXmlFileAndBindToDataGrid();
+            }
+            catch (FileNotFoundException)
+            {
+
+                MessageBox.Show("Unable to locate data file.\nExiting the application.");
+                this.Close();
+            }
+
         }
 
         private void btn_CheckList_Click(object sender, EventArgs e)
@@ -71,7 +82,18 @@ namespace Demo_WinForms_FlintstonesViewer
 
         private void btn_exit_Click(object sender, EventArgs e)
         {
+            try
+            {
+                IDataService XmlDataService = new XmlDataService(AppConfig.dataFilePath);
+                XmlDataService.WriteAll(_characters);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             this.Close();
+
         }
     }
 }
