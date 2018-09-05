@@ -17,5 +17,10 @@ namespace Demo_WinForms_FlintstonesViewer
         public GenderType Gender { get; set; }
         public string ImageFileName { get; set; }
         public string Description { get; set; }
+
+        public string FullName()
+        {
+            return FirstName + (LastName != null ? " " + LastName : "") ;
+        }
     }
 }

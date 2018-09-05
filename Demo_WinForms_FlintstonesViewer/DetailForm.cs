@@ -22,7 +22,14 @@ namespace Demo_WinForms_FlintstonesViewer
 
         private void DetailForm_Load(object sender, EventArgs e)
         {
-            txtBox_FirstName.Text = _person.FirstName;
+            lbl_FullName.Text = _person.FullName();
+            lbl_Age.Text = _person.Age.ToString();
+            lbl_Gender.Text = _person.Gender.ToString();
+            lbl_Description.Text = _person.Description;
+            picBox_Photo.Image = Image.FromFile(@"Images/" + _person.ImageFileName);
         }
+
+
+
     }
 }

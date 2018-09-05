@@ -10,48 +10,43 @@ using System.Windows.Forms;
 
 namespace Demo_WinForms_FlintstonesViewer
 {
-    public partial class Form1 : Form
+    public partial class ListForm : Form
     {
         private List<Character> _charecters;
 
-        public Form1()
+        public ListForm()
         {
             InitializeComponent();
         }
 
-        private void InitalizeAndBindListOfPeople()
+        private void ReadXmlFileAndBindToDataGrid()
         {
-            //_charecters = new List<Character>()
-            //{
-            //    new Character()
-            //    {
-            //        Id = 1,
-            //        LastName = "Velis",
-            //        FirstName = "John",
-            //        Age = 60
-            //    },
-            //                    new Character()
-            //    {
-            //        Id = 2,
-            //        LastName = "Velis",
-            //        FirstName = "Jeff",
-            //        Age = 55
-            //    },
-            //};
-
             string datafile = @"Data\FlintstoneCharacters.xml";
 
+            //
+            // read data file
+            //
             IDataService dataService = new XmlDataService(datafile);
             _charecters = dataService.ReadAll();
 
+            //
+            // bind list to DataGridView control
+            //
             var bindingList = new BindingList<Character>(_charecters);
             var source = new BindingSource(bindingList, null);
             dataGridView_Characters.DataSource = source;
+
+            //
+            // configure DataGridView control
+            //
+            this.dataGridView_Characters.Columns["Id"].Visible = false;
+            this.dataGridView_Characters.Columns["ImageFileName"].Visible = false;
+            this.dataGridView_Characters.Columns["Description"].Visible = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            InitalizeAndBindListOfPeople();
+            ReadXmlFileAndBindToDataGrid();
         }
 
         private void btn_CheckList_Click(object sender, EventArgs e)
@@ -66,12 +61,17 @@ namespace Demo_WinForms_FlintstonesViewer
         {
             if (dataGridView_Characters.SelectedRows.Count == 1)
             {
-                Character person = new Character();
-                person = (Character)dataGridView_Characters.CurrentRow.DataBoundItem;
+                Character character = new Character();
+                character = (Character)dataGridView_Characters.CurrentRow.DataBoundItem;
 
-                DetailForm detailForm = new DetailForm(person);
-                detailForm.Show();
+                DetailForm detailForm = new DetailForm(character);
+                detailForm.ShowDialog();
             }
+        }
+
+        private void btn_exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
