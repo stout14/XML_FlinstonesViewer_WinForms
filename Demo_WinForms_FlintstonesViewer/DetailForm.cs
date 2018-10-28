@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Demo_WinForms_FlintstonesViewer
 {
@@ -26,7 +27,15 @@ namespace Demo_WinForms_FlintstonesViewer
             lbl_Age.Text = "Age: " + _person.Age.ToString();
             lbl_Gender.Text = "Gender:" + _person.Gender.ToString();
             lbl_Description.Text = _person.Description;
-            picBox_Photo.Image = Image.FromFile(@"Images/" + _person.ImageFileName);
+            if (_person.ImageFileName == null)
+            {
+                picBox_Photo.Image = Image.FromFile("@Images/default.jpg");
+            }
+            else
+            {
+                picBox_Photo.Image = Image.FromFile(@"Images/" + _person.ImageFileName);
+            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

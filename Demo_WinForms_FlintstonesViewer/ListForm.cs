@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Demo_WinForms_FlintstonesViewer.DAL;
 
 namespace Demo_WinForms_FlintstonesViewer
 {
@@ -27,8 +28,8 @@ namespace Demo_WinForms_FlintstonesViewer
             //
             // read data file
             //
-            IDataService dataService = new XmlDataService(dataFilePath);
-            _characters = dataService.ReadAll();
+            IDataService dataService = new MongoDBDataService();
+            _characters = dataService.ReadAll() as List<Character>;
 
             //
             // bind list to DataGridView control
@@ -40,9 +41,9 @@ namespace Demo_WinForms_FlintstonesViewer
             //
             // configure DataGridView control
             //
-            this.dataGridView_Characters.Columns["Id"].Visible = false;
-            this.dataGridView_Characters.Columns["ImageFileName"].Visible = false;
-            this.dataGridView_Characters.Columns["Description"].Visible = false;
+            this.dataGridView_Characters.Columns["Id"].Visible = true;
+            this.dataGridView_Characters.Columns["ImageFileName"].Visible = true;
+            this.dataGridView_Characters.Columns["Description"].Visible = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -84,8 +85,8 @@ namespace Demo_WinForms_FlintstonesViewer
         {
             try
             {
-                IDataService XmlDataService = new XmlDataService(AppConfig.dataFilePath);
-                XmlDataService.WriteAll(_characters);
+                IDataService MongoDBDataService = new MongoDBDataService();
+                MongoDBDataService.WriteAll(_characters);
             }
             catch (Exception)
             {
