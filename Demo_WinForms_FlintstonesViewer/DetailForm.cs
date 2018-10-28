@@ -29,11 +29,11 @@ namespace Demo_WinForms_FlintstonesViewer
             lbl_Description.Text = _person.Description;
             if (_person.ImageFileName == null)
             {
-                picBox_Photo.Image = Image.FromFile("@Images/default.jpg");
+                picBox_Photo.Load("https://moorehumane.org/wp-content/uploads/2016/06/avatar-male.jpg");
             }
             else
             {
-                picBox_Photo.Image = Image.FromFile(@"Images/" + _person.ImageFileName);
+                picBox_Photo.Load(_person.ImageFileName);
             }
             
         }

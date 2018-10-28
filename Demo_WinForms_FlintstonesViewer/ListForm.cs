@@ -14,6 +14,9 @@ namespace Demo_WinForms_FlintstonesViewer
 {
     public partial class ListForm : Form
     {
+        string searchTerm = "";
+        string catagorySearchTerm = "";
+        
         private List<Character> _characters;
 
         public ListForm()
@@ -42,8 +45,8 @@ namespace Demo_WinForms_FlintstonesViewer
             // configure DataGridView control
             //
             this.dataGridView_Characters.Columns["Id"].Visible = true;
-            this.dataGridView_Characters.Columns["ImageFileName"].Visible = true;
-            this.dataGridView_Characters.Columns["Description"].Visible = true;
+            this.dataGridView_Characters.Columns["ImageFileName"].Visible = false;
+            this.dataGridView_Characters.Columns["Description"].Visible = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -95,6 +98,69 @@ namespace Demo_WinForms_FlintstonesViewer
             }
             this.Close();
 
+        }
+
+        private void button_OrderByAge_Click(object sender, EventArgs e)
+        {
+            var sortedList = _characters.OrderBy(c => c.Age).ToList();
+            dataGridView_Characters.DataSource = sortedList;
+        }
+
+
+        private void button_OrderByName_Click(object sender, EventArgs e)
+        {
+            var sortedList = _characters.OrderBy(c => c.FirstName).ToList();
+            dataGridView_Characters.DataSource = sortedList;
+        }
+
+        private void button_OrderByID_Click(object sender, EventArgs e)
+        {
+            var sortedList = _characters.OrderBy(c => c.Id).ToList();
+            dataGridView_Characters.DataSource = sortedList;
+        }
+
+        private void button_FilterByMale_click(object sender, EventArgs e)
+        {
+            var filteredList = _characters.Where(c => c.Gender == Character.GenderType.Male).ToList();
+            dataGridView_Characters.DataSource = filteredList;
+        }
+
+        private void button_FilterByFemale_click(object sender, EventArgs e)
+        {
+            var filteredList = _characters.Where(c => c.Gender == Character.GenderType.Female).ToList();
+            dataGridView_Characters.DataSource = filteredList;
+        }
+
+
+
+        private void textbox_pressEnter(object sender, KeyPressEventArgs e)
+        {
+            searchTerm = SearchTextBox.Text;
+            
+            if (e.KeyChar == 13)
+            {
+                e.Handled = true; // this stops the application from dinging at you when pressing enter
+                var searchedList = _characters.Where(c => c.LastName.ToUpper().Contains(searchTerm.ToUpper())).ToList();
+                dataGridView_Characters.DataSource = searchedList;
+            }
+            
+        }
+
+        private void SearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            //messing with this
+        }
+
+        private void button_search_click(object sender, EventArgs e)
+        {            
+            var searchedList = _characters.Where(c => c.LastName.ToUpper().Contains(searchTerm.ToUpper())).ToList();
+            dataGridView_Characters.DataSource = searchedList;
+        }
+
+        private void button_help_click(object sender, EventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.ShowDialog();
         }
     }
 }
